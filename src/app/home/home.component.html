@@ -1,0 +1,27 @@
+@if(authService.currentUserSig() == null) {
+    <div class="text-red-400">
+        Please Login.
+    </div>   
+}
+
+@if(authService.currentUserSig()) {
+
+    <div class="flex justify-center m-4">
+        <div>
+            <p-button label="Logout" severity="danger" (click)="logout()"></p-button>
+        </div>
+        <div>
+            Username: 
+        </div>
+    </div>
+    
+    <div class="h-screen flex">
+        <div class="chat-list w-1/3 m-2 rounded-md p-1">
+            hello
+        </div>
+        
+        <div class="right-panel w-2/3 m-2 rounded-md p-1">
+            hello again
+        </div>
+    </div>
+}

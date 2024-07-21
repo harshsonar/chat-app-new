@@ -1,0 +1,30 @@
+<div class="login p-20 h-full flex flex-col justify-center items-center">
+    <h2 class="mb-2 flex justify-center">Login</h2>
+    <div>
+    <form [formGroup]="loginForm" class="login-form flex flex-col">
+        <div class="flex justify-center">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" class="emailInput pb-5" matInput formControlName="email"> 
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+            </mat-form-field>
+        </div>
+
+        <div class="flex justify-center">
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" class="passwordInput pb-5" matInput formControlName="password"> 
+                <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+            </mat-form-field>
+        </div>
+
+        @if(errorMessage) {
+            <div class="text-red-400 mb-2">{{ errorMessage }}</div>
+        }
+
+        <div class="signup-button flex justify-center">
+            <button pButton label="Submit" class="p-button-primary" (click)="onSubmit()"></button>
+        </div>
+    </form>
+    </div>
+</div>

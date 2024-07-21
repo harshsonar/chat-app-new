@@ -1,0 +1,6 @@
+1. Removing environment.ts file and configuring firebase within app.config.ts itself.
+
+2. Using 'interface' for user email aand password. - pending 
+
+3. Using OBSERVABLES instead of PROMISES. Firebase returns mostly promises, we are converting them to observables.
+   NOT DOING THIS MAYBE. MAKES IT UNNECESSARILY COMPLEX.
