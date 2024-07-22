@@ -7,8 +7,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RegisterForm } from '../interface/register';
 import { catchError, concatMap, from } from 'rxjs';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
