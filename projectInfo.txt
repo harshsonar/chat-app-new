@@ -1,3 +1,0 @@
-For work Laptop, use 
-npm i --registry=https://registry.npmjs.org/ [packageName]
-to download packages from npm registry.
