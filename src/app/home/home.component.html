@@ -6,12 +6,12 @@
 
 @if(authService.currentUserSig()) {
 
-    <div class="flex justify-center m-4">
+    <div class="flex justify-between m-4">
         <div>
-            <p-button label="Logout" severity="danger" (click)="logout()"></p-button>
+            Username: <span class="font-semibold">{{currentUserUsername}}</span>
         </div>
         <div>
-            Username: 
+            <p-button label="Logout" severity="danger" (click)="logout()"></p-button>
         </div>
     </div>
     

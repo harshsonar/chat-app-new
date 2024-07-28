@@ -1,8 +1,7 @@
-// localhost/users/registerUser
-// localhost/users/deleteUser
-// localhost/users/updateUser
-// AND
-// localhost/home/addChat
+// /users/registerUser
+// /users/deleteUser
+// /users/updateUser
+// /users/searchUser -- for home/addChat
 
 const express = require("express");
 const router = express.Router();
@@ -30,6 +29,6 @@ router.post("/deleteUser", (req, res) => {});
 
 router.post("/updateUser", (req, res) => {});
 
-router.get("/addChat", (req, res) => {});
+router.get("/searchUser", (req, res) => {});
 
 module.exports = router;

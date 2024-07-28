@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { ButtonModule } from 'primeng/button';
+import { UserInterface } from '../interface/user';
+import { RouterService } from '../shared/router.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,7 @@ import { ButtonModule } from 'primeng/button';
 })
 export class HomeComponent implements OnInit {
   
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private routerService: RouterService) {}
 
   ngOnInit(): void {
 
@@ -22,7 +24,9 @@ export class HomeComponent implements OnInit {
             email: user.email!,
             username: user.displayName!
           }
-        )
+        );
+
+        this.currentUserUsername = user.displayName;
       }
       else {
         this.authService.currentUserSig.set(null);
@@ -34,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   result: boolean = false;
-  username: string = ""; 
+  currentUserUsername: string | null = null;
 
   logout() {
 
@@ -42,6 +46,8 @@ export class HomeComponent implements OnInit {
 
     if (this.result) {
       this.authService.firebaseLogout();
+      this.routerService.routeToLandingPage();
     }
+
   }
 }

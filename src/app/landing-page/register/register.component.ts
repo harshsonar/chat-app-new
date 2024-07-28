@@ -37,15 +37,16 @@ export class RegisterComponent {
   });
   
   onSubmit() {
-    this.authService.userRegister(this.registerForm.value)
+    this.userService.register(this.registerForm.value)
     .subscribe({
       next: (res) => {
-        // console.log("Component res " + res);
+        window.alert("Account Created!");
       },
       error: (err) => {
         // console.log("Component error " + err);
       }
     });
+
   }
 
 }
