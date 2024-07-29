@@ -37,14 +37,14 @@ export class HomeComponent implements OnInit {
     // The "!" is used when "user.email" will DEFINITELY have a value and to ignore the null error.
   }
 
-  result: boolean = false;
   currentUserUsername: string | null = null;
 
   logout() {
+    let result = false;
 
-    this.result = window.confirm("Are you sure you want to logout?");
+    result = window.confirm("Are you sure you want to logout?");
 
-    if (this.result) {
+    if (result) {
       this.authService.firebaseLogout();
       this.routerService.routeToLandingPage();
     }
