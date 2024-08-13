@@ -43,7 +43,7 @@ export class RegisterComponent {
         window.alert("Account Created!");
       },
       error: (err) => {
-        // console.log("Component error " + err);
+        this.errorMessage = err.message;
       }
     });
 

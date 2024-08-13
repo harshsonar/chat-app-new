@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { ButtonModule } from 'primeng/button';
-import { UserInterface } from '../interface/user';
+import { ChatListComponent } from './chat-list/chat-list.component';
+import { ChatPanelComponent } from './chat-panel/chat-panel.component';
 import { RouterService } from '../shared/router.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule],
+  imports: [ButtonModule, ChatListComponent, ChatPanelComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
