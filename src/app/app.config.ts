@@ -3,21 +3,18 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from "@angular/platform-browser/animations"
-import { getAuth, provideAuth } from '@angular/fire/auth';
-import { provideFirebaseApp } from '@angular/fire/app';
-import { initializeApp } from 'firebase/app';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDP0NADeSSRXqpDuTVm0UMeODgyaSOo6M8",
-  authDomain: "chat-app-3c994.firebaseapp.com",
-  databaseURL: "https://chat-app-3c994-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "chat-app-3c994",
-  storageBucket: "chat-app-3c994.appspot.com",
-  messagingSenderId: "550983625851",
-  appId: "1:550983625851:web:dc4779537dbf41a00e86de"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDP0NADeSSRXqpDuTVm0UMeODgyaSOo6M8",
+//   authDomain: "chat-app-3c994.firebaseapp.com",
+//   databaseURL: "https://chat-app-3c994-default-rtdb.asia-southeast1.firebasedatabase.app",
+//   projectId: "chat-app-3c994",
+//   storageBucket: "chat-app-3c994.appspot.com",
+//   messagingSenderId: "550983625851",
+//   appId: "1:550983625851:web:dc4779537dbf41a00e86de"
+// };
 
 
 export const appConfig: ApplicationConfig = {
@@ -27,10 +24,10 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(withFetch()),
 
-    // For Firebase
-    importProvidersFrom([
-      provideFirebaseApp(() => initializeApp(firebaseConfig)),
-      provideAuth(() => getAuth())
-    ]),
+    // // For Firebase
+    // importProvidersFrom([
+    //   provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    //   provideAuth(() => getAuth())
+    // ]),
   ]
 };

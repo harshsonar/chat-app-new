@@ -37,15 +37,7 @@ export class RegisterComponent {
   });
   
   onSubmit() {
-    this.userService.register(this.registerForm.value)
-    .subscribe({
-      next: (res) => {
-        window.alert("Account Created!");
-      },
-      error: (err) => {
-        // console.log("Component error " + err);
-      }
-    });
+    this.authService.validatePassword(this.registerForm.value);
 
   }
 

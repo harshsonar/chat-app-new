@@ -34,14 +34,14 @@ export class LoginComponent {
   });
  
   onSubmit() {
-    this.authService
-    .firebaseLogin(this.loginForm.value)
-    .then(() => {
-      this.errorMessage = null;
-      this.router.routeToHome();
-    })
-    .catch((err) => {
-      this.errorMessage = err.code;
-    });
+    // this.authService
+    // .firebaseLogin(this.loginForm.value)
+    // .then(() => {
+    //   this.errorMessage = null;
+    //   this.router.routeToHome();
+    // })
+    // .catch((err) => {
+    //   this.errorMessage = err.code;
+    // });
   }
 }

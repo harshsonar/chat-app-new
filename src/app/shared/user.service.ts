@@ -19,10 +19,7 @@ export class UserService {
   // Register user on database and firebase
   // For registering user, we need to call both functions from auth and user services. Hence, using concatMap()
   register(form: RegisterForm) {
-    return this.userRegister(form).pipe(
-      concatMap( () => from(this.authService.firebaseRegister(form))),
-      catchError(err => {return err})
-    );
+    return this.userRegister(form);
   }
 
   // Register on database
