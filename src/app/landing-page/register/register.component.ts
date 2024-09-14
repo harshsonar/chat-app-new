@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { inject } from '@angular/core';
-import { FormControl,
-         FormGroupDirective,
-         NgForm,
-         Validators,
-         ReactiveFormsModule, 
-         FormBuilder,
-         FormGroup} from '@angular/forms';
+import {
+  FormControl,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup
+} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '../../shared/auth.service';
@@ -25,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class RegisterComponent {
 
-  constructor (private authService: AuthService, private userService: UserService, private router: RouterService) {}
+  constructor(private authService: AuthService, private userService: UserService, private router: RouterService) { }
 
   formBuilder = inject(FormBuilder);
   errorMessage: string | null = null;
@@ -35,10 +37,13 @@ export class RegisterComponent {
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
-  
-  onSubmit() {
-    this.authService.validatePassword(this.registerForm.value);
 
+  onSubmit() {
+    this.authService.validatePassword(this.registerForm.value).subscribe((res) => {
+      if (res) {
+        this.userService.userRegister(this.registerForm.value);
+      }
+    });
   }
 
 }

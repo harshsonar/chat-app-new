@@ -12,22 +12,11 @@ export class UserService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-
   userRegisterAPI: string = 'http://localhost:3000/users/registerUser';
-
-
-  // Register user on database and firebase
-  // For registering user, we need to call both functions from auth and user services. Hence, using concatMap()
-  register(form: RegisterForm) {
-    return this.userRegister(form);
-  }
 
   // Register on database
   userRegister(form: RegisterForm) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
-    const response = this.http.post(this.userRegisterAPI, form, { headers });
-    console.log("db response: ", response);
-    
-    return response;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.userRegisterAPI, form, { headers });;
   }
 }
