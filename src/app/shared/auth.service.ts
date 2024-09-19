@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { RouterService } from './router.service';
 import { UserInterface } from '../interface/user';
 import { RegisterForm } from '../interface/register';

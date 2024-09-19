@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
     result = window.confirm("Are you sure you want to logout?");
 
     if (result) {
-      // this.authService.firebaseLogout();
       this.routerService.routeToLandingPage();
     }
 
