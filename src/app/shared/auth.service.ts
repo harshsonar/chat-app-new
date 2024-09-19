@@ -21,4 +21,8 @@ export class AuthService {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$/;
     return of(passwordRegex.test(form.password));
   }
+
+  userLogin(form: UserInterface) {
+
+  }
 }

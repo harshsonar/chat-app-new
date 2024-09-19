@@ -1,14 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
-import { FormControl,
-         FormGroupDirective,
-         NgForm,
-         Validators,
-         FormsModule,
-         ReactiveFormsModule,
-         FormBuilder,
-         FormGroup, } from '@angular/forms';
+import {
+  FormControl,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '../../shared/auth.service';
@@ -23,7 +25,7 @@ import { RouterService } from '../../shared/router.service';
 })
 export class LoginComponent {
 
-  constructor (private authService: AuthService, private router: RouterService) {}
+  constructor(private authService: AuthService, private router: RouterService) { }
 
   errorMessage: string | null = null;
 
@@ -32,16 +34,9 @@ export class LoginComponent {
     email: '',
     password: ''
   });
- 
+
   onSubmit() {
-    // this.authService
-    // .firebaseLogin(this.loginForm.value)
-    // .then(() => {
-    //   this.errorMessage = null;
-    //   this.router.routeToHome();
-    // })
-    // .catch((err) => {
-    //   this.errorMessage = err.code;
-    // });
+    this.authService.userLogin(this.loginForm.value)
+
   }
 }

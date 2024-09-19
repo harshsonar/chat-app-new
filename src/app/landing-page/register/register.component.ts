@@ -43,7 +43,10 @@ export class RegisterComponent {
       if (res) {
         this.userService.userRegister(this.registerForm.value);
       }
-    });
+      else {
+        this.errorMessage = "Invalid Password!";
+      }
+    }).unsubscribe();
   }
 
 }
