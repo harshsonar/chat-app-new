@@ -1,54 +1,28 @@
-import { Injectable, inject, signal } from '@angular/core';
-import { Auth, user, signOut } from '@angular/fire/auth';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@firebase/auth';
+import { Injectable, signal } from '@angular/core';
 import { RouterService } from './router.service';
 import { UserInterface } from '../interface/user';
 import { RegisterForm } from '../interface/register';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  
-  constructor(private router: RouterService, private auth: Auth) { }
-  
-  firebaseAuth = inject(Auth);
-  userdata$ = user(this.firebaseAuth);
-  // contains all user data. "$" signifies its an observable - it does not have any function of its own but is a convention.
+
+  constructor(private router: RouterService) { }
 
   currentUserSig = signal<UserInterface | null | undefined>(undefined);
   // Can have <> 3 values, undefined by default.
   // We need undefined because we want to avoid any unusual circumstance.
 
 
-
-  //Register on Firebase
-  firebaseRegister(form: RegisterForm) {
-    const promise = createUserWithEmailAndPassword(this.firebaseAuth, form.email, form.password)
-    .then(  
-      (res) => {
-        updateProfile(res.user, {displayName: form.username});
-        console.log("fb response: ", promise);
-      }
-    ).catch( () => console.log("fb error in service file") );
-    //updateProfile() is for updating username as createUserWithEmailAndPassword() does not contain param to add username
-    
-    return promise;
+  validatePassword(form: RegisterForm): Observable<boolean> {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$/;
+    return of(passwordRegex.test(form.password));
   }
 
+  userLogin(form: UserInterface) {
 
-  //Login
-  firebaseLogin(loginForm: any) {
-    const promise = signInWithEmailAndPassword(this.firebaseAuth, loginForm.email, loginForm.password);
-    console.log(promise);
-    
-    return promise;
-  }
-
-  //Logout
-  firebaseLogout() {
-    const promise = signOut(this.firebaseAuth);
-    return promise;
   }
 }

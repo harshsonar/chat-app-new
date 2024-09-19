@@ -12,22 +12,22 @@ import { AuthService } from '../shared/auth.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.userdata$.subscribe((user) => {
-      if (user) {
-        this.authService.currentUserSig.set(
-          {
-            email: user.email!,
-            username: user.displayName!
-            // We are using "!" as we know it wont be null/empty. Because we already have put condition "if(user)"
-          }
-        )
-      }
-      else {
-        this.authService.currentUserSig.set(null);
-      }
-    });
+    // this.authService.userdata$.subscribe((user) => {
+    //   if (user) {
+    //     this.authService.currentUserSig.set(
+    //       {
+    //         email: user.email!,
+    //         username: user.displayName!
+    //         // We are using "!" as we know it wont be null/empty. Because we already have put condition "if(user)"
+    //       }
+    //     )
+    //   }
+    //   else {
+    //     this.authService.currentUserSig.set(null);
+    //   }
+    // });
   }
 }

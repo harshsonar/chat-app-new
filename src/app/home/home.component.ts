@@ -12,27 +12,27 @@ import { RouterService } from '../shared/router.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  
-  constructor(public authService: AuthService, private routerService: RouterService) {}
+
+  constructor(public authService: AuthService, private routerService: RouterService) { }
 
   ngOnInit(): void {
 
-    this.authService.userdata$.subscribe((user) => {
-      if(user) {
-        this.authService.currentUserSig.set(
-          {
-            email: user.email!,
-            username: user.displayName!
-          }
-        );
+    // this.authService.userdata$.subscribe((user) => {
+    //   if(user) {
+    //     this.authService.currentUserSig.set(
+    //       {
+    //         email: user.email!,
+    //         username: user.displayName!
+    //       }
+    //     );
 
-        this.currentUserUsername = user.displayName;
-      }
-      else {
-        this.authService.currentUserSig.set(null);
-      }
-      console.log(this.authService.currentUserSig());
-    });
+    //     this.currentUserUsername = user.displayName;
+    //   }
+    //   else {
+    //     this.authService.currentUserSig.set(null);
+    //   }
+    //   console.log(this.authService.currentUserSig());
+    // });
 
     // The "!" is used when "user.email" will DEFINITELY have a value and to ignore the null error.
   }
@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
     result = window.confirm("Are you sure you want to logout?");
 
     if (result) {
-      this.authService.firebaseLogout();
       this.routerService.routeToLandingPage();
     }
 
