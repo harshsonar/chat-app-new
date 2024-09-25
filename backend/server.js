@@ -11,9 +11,11 @@ mongoose.connect("mongodb://127.0.0.1:27017/chat-app", {});
 // require the routes
 const usersRouter = require("./routes/users");
 const conversationsRouter = require("./routes/conversations");
+const loginRouter = require('./routes/login')
 
 // use middleware .use() to trigger specific routes
 app.use("/users", usersRouter);
 app.use("/home", conversationsRouter);
+app.use("/loginUser", loginRouter);
 
 app.listen(3000);
