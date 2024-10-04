@@ -9,24 +9,21 @@ const generateToken = (user) => {
   return jwt.sign({ email: user.email, password: user.passwordHash }, JWT_KEY, { expiresIn: '1h' });
 }
 
-router.post("", (req, res) => {
+router.post("", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = User.findOne({ email });
+    const user = await User.findOne({ email });
     if(!user) {
       return res.status(404).json({ message: "User not found!" });
     }
 
-    console.log(user);
-    
-    const isMatch = bcrypt.compare(password, user.passwordHash);
+    const isMatch = await bcrypt.compare(password, user.passwordHash);
     if(!isMatch) {
       return res.status(404).json({ message: "Invalid credentials" });
     }
     
     const token = generateToken(user);
-    
     console.log(token);
     
     res.json({token});
