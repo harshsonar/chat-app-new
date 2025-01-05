@@ -24,7 +24,7 @@ export class AuthService {
     return of(passwordRegex.test(form.password));
   }
 
-  userLogin(form: UserInterface) {
+  userLogin(form: UserInterface): Observable<Object> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.userLoginAPI, form, { headers });
   }

@@ -36,7 +36,10 @@ export class LoginComponent {
   });
 
   onSubmit() {
-    this.authService.userLogin(this.loginForm.value)
-
+    this.authService.userLogin(this.loginForm.value).subscribe((res) => {
+      if(res) {
+        this.router.routeToHome();
+      }
+    });
   }
 }

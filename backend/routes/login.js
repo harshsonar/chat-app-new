@@ -23,10 +23,18 @@ router.post("", async (req, res) => {
       return res.status(404).json({ message: "Invalid credentials" });
     }
     
-    const token = generateToken(user);
-    console.log(token);
+    const token = generateToken(user);  
     
-    res.json({token});
+    res.cookie('authToken', token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'none',
+      maxAge: 60 * 60 * 1000 // 1 hour, idk how; ask chatGpt the exact units of these numbers if you wanna know.
+    });
+    
+    return res.status(200).json({
+      message: "Login successful"
+    });
   } 
   catch(err) {
     console.log(err);
