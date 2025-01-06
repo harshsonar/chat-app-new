@@ -12,10 +12,10 @@ export class UserService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  userRegisterAPI: string = 'http://localhost:3000/users/registerUser';
+  userRegisterAPI: string = 'http://localhost:3000/registerUser';
 
   // Register on database
-  userRegister(form: RegisterForm) {
+  userRegister(form: RegisterForm): Observable<Object> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.userRegisterAPI, form, { headers });;
   }

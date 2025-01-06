@@ -41,7 +41,7 @@ export class RegisterComponent {
   onSubmit() {
     this.authService.validatePassword(this.registerForm.value).subscribe((res) => {
       if (res) {
-        this.userService.userRegister(this.registerForm.value);
+        this.userService.userRegister(this.registerForm.value).subscribe();
       }
       else {
         this.errorMessage = "Invalid Password!";
