@@ -6,7 +6,7 @@ const JWT_KEY = require('../environments/environment');
 const User = require('../models/User');
 
 const generateToken = (user) => {
-  return jwt.sign({ email: user.email, password: user.passwordHash }, JWT_KEY, { expiresIn: '1h' });
+  return jwt.sign({ email: user.email, password: user.passwordHash }, JWT_KEY, {expiresIn: '24h'});
 }
 
 router.post("", async (req, res) => {
@@ -28,8 +28,7 @@ router.post("", async (req, res) => {
     res.cookie('authToken', token, {
       httpOnly: true,
       secure: false,
-      sameSite: 'none',
-      maxAge: 60 * 60 * 1000 // 1 hour, idk how; ask chatGpt the exact units of these numbers if you wanna know.
+      sameSite: 'none'
     });
     
     return res.status(200).json({
