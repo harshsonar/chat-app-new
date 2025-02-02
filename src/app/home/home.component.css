@@ -1,9 +1,11 @@
-.chat-list {
-    /* border-radius: 8px; */
-    background-color: rgb(254, 241, 225);
+.right-panel {
+    background-color: rgb(219, 237, 253);
 }
 
-.right-panel {
-    /* border-radius: 8px; */
-    background-color: rgb(219, 237, 253);
+:host ::ng-deep nb-user.shape-round .user-picture {
+  border: 0.5px solid #4e629b;
+}
+
+:host ::ng-deep nb-layout-column {
+  padding: 1rem 1rem 0.50rem !important;
 }
