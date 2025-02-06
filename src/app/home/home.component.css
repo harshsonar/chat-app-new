@@ -1,5 +1,14 @@
+.left-panel {
+  height: calc(100% - 75px);
+}
+
+.chat-list {
+  height: calc(100%);
+}
+
 .right-panel {
-    background-color: rgb(219, 237, 253);
+  height: calc(100% - 90px);
+  background-color: rgb(219, 237, 253);
 }
 
 :host ::ng-deep nb-user.shape-round .user-picture {
@@ -8,4 +17,9 @@
 
 :host ::ng-deep nb-layout-column {
   padding: 1rem 1rem 0.50rem !important;
+}
+
+:host nb-chat {
+  margin: 6px;
+  height: 99%;
 }
