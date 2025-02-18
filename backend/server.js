@@ -2,7 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
+const http = require('http');
+const {socketIo} = require('socket.io');
+
 const app = express();
+const server = http.createServer(app);
 
 // require the routes
 const registerRouter = require('./routes/register');
@@ -23,4 +27,15 @@ app.use("/loginUser", loginRouter);
 app.use("/users", authMiddleware, usersRouter);
 app.use("/home", authMiddleware, conversationsRouter);
 
-app.listen(3000);
+// initialize socket.io
+const io = new socketIo(server);
+
+io.on("connection", (socket) => {
+  // do some magic
+
+  socket.on("disconnect", () => {
+    // disconnect
+  })
+});
+
+server.listen(3000);
